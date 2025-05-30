@@ -1,13 +1,34 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React, { useState } from 'react';
+import EventJoin from '@/components/EventJoin';
+import EventFeed from '@/components/EventFeed';
 
 const Index = () => {
+  const [currentEvent, setCurrentEvent] = useState<{
+    code: string;
+    userName: string;
+  } | null>(null);
+
+  const handleJoinEvent = (eventCode: string, userName: string) => {
+    setCurrentEvent({ code: eventCode, userName });
+  };
+
+  const handleLeaveEvent = () => {
+    setCurrentEvent(null);
+  };
+
+  if (currentEvent) {
+    return (
+      <EventFeed
+        eventCode={currentEvent.code}
+        userName={currentEvent.userName}
+        onLeaveEvent={handleLeaveEvent}
+      />
+    );
+  }
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <EventJoin onJoinEvent={handleJoinEvent} />
   );
 };
 
