@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { Camera, Users, Comment, Download, Share, Heart } from 'lucide-react';
+import { Camera, Users, MessageCircle, Download, Share, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -205,7 +204,7 @@ const EventFeed = ({ eventCode, userName, onLeaveEvent }: EventFeedProps) => {
                         )}
                         className="text-gray-600"
                       >
-                        <Comment className="w-5 h-5 mr-1" />
+                        <MessageCircle className="w-5 h-5 mr-1" />
                         {photo.comments.length}
                       </Button>
                     </div>
