@@ -10,45 +10,45 @@ interface RoleSelectionProps {
 
 const RoleSelection = ({ onRoleSelect }: RoleSelectionProps) => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black flex items-center justify-center p-4">
       <div className="w-full max-w-md space-y-8">
         {/* Header */}
         <div className="text-center text-white space-y-4">
-          <div className="w-24 h-24 mx-auto bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-            <Crown className="w-12 h-12" />
+          <div className="w-24 h-24 mx-auto bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-xl">
+            <Crown className="w-12 h-12 text-black" />
           </div>
-          <h1 className="text-4xl font-bold">EventSnap</h1>
-          <p className="text-lg opacity-90">¿Cuál es tu rol en el evento?</p>
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">EventSnap</h1>
+          <p className="text-lg text-gray-300">¿Cuál es tu rol en el evento?</p>
         </div>
 
         {/* Role Cards */}
         <div className="space-y-4">
           <Card 
-            className="p-6 bg-white/10 backdrop-blur-sm border-white/20 text-white cursor-pointer hover:bg-white/20 transition-all duration-200"
+            className="p-6 bg-white/5 backdrop-blur-sm border-yellow-400/20 text-white cursor-pointer hover:bg-yellow-400/10 hover:border-yellow-400/40 transition-all duration-300 shadow-lg"
             onClick={() => onRoleSelect('organizer')}
           >
             <div className="flex items-center space-x-4">
-              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
-                <Crown className="w-8 h-8" />
+              <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg">
+                <Crown className="w-8 h-8 text-black" />
               </div>
               <div className="flex-1">
-                <h3 className="text-xl font-semibold mb-2">Soy organizador</h3>
-                <p className="opacity-80 text-sm">Quiero crear y gestionar un evento</p>
+                <h3 className="text-xl font-semibold mb-2 text-yellow-400">Soy organizador</h3>
+                <p className="text-gray-300 text-sm">Quiero crear y gestionar un evento</p>
               </div>
             </div>
           </Card>
 
           <Card 
-            className="p-6 bg-white/10 backdrop-blur-sm border-white/20 text-white cursor-pointer hover:bg-white/20 transition-all duration-200"
+            className="p-6 bg-white/5 backdrop-blur-sm border-yellow-400/20 text-white cursor-pointer hover:bg-yellow-400/10 hover:border-yellow-400/40 transition-all duration-300 shadow-lg"
             onClick={() => onRoleSelect('guest')}
           >
             <div className="flex items-center space-x-4">
-              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
-                <Users className="w-8 h-8" />
+              <div className="w-16 h-16 bg-gradient-to-br from-gray-600 to-gray-800 rounded-full flex items-center justify-center shadow-lg">
+                <Users className="w-8 h-8 text-white" />
               </div>
               <div className="flex-1">
-                <h3 className="text-xl font-semibold mb-2">Soy invitado</h3>
-                <p className="opacity-80 text-sm">Tengo un código para unirme a un evento</p>
+                <h3 className="text-xl font-semibold mb-2 text-white">Soy invitado</h3>
+                <p className="text-gray-300 text-sm">Tengo un código para unirme a un evento</p>
               </div>
             </div>
           </Card>

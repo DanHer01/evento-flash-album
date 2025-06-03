@@ -20,52 +20,52 @@ const EventJoin = ({ onJoinEvent }: EventJoinProps) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black flex items-center justify-center p-4">
       <div className="w-full max-w-md space-y-8">
         {/* Header */}
         <div className="text-center text-white space-y-4">
-          <div className="w-24 h-24 mx-auto bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-            <Camera className="w-12 h-12" />
+          <div className="w-24 h-24 mx-auto bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-xl">
+            <Camera className="w-12 h-12 text-black" />
           </div>
-          <h1 className="text-4xl font-bold">EventSnap</h1>
-          <p className="text-lg opacity-90">Captura y comparte momentos únicos</p>
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">EventSnap</h1>
+          <p className="text-lg text-gray-300">Captura y comparte momentos únicos</p>
         </div>
 
         {/* Join Card */}
-        <Card className="p-6 bg-white/10 backdrop-blur-sm border-white/20 text-white">
+        <Card className="p-6 bg-white/5 backdrop-blur-sm border-yellow-400/20 text-white shadow-xl">
           <div className="space-y-6">
             <div className="text-center">
-              <h2 className="text-2xl font-semibold mb-2">Únete al evento</h2>
-              <p className="opacity-80">Ingresa el código del evento y tu nombre</p>
+              <h2 className="text-2xl font-semibold mb-2 text-yellow-400">Únete al evento</h2>
+              <p className="text-gray-300">Ingresa el código del evento y tu nombre</p>
             </div>
 
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-2">Código del evento</label>
+                <label className="block text-sm font-medium mb-2 text-gray-300">Código del evento</label>
                 <Input
                   type="text"
                   placeholder="BODA2024"
                   value={eventCode}
                   onChange={(e) => setEventCode(e.target.value.toUpperCase())}
-                  className="bg-white/20 border-white/30 text-white placeholder:text-white/60"
+                  className="bg-black/50 border-yellow-400/30 text-white placeholder:text-gray-500 focus:border-yellow-400"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Tu nombre</label>
+                <label className="block text-sm font-medium mb-2 text-gray-300">Tu nombre</label>
                 <Input
                   type="text"
                   placeholder="María García"
                   value={userName}
                   onChange={(e) => setUserName(e.target.value)}
-                  className="bg-white/20 border-white/30 text-white placeholder:text-white/60"
+                  className="bg-black/50 border-yellow-400/30 text-white placeholder:text-gray-500 focus:border-yellow-400"
                 />
               </div>
 
               <Button
                 onClick={handleJoin}
                 disabled={!eventCode.trim() || !userName.trim()}
-                className="w-full bg-white text-purple-600 hover:bg-white/90 font-semibold py-3"
+                className="w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-black hover:from-yellow-500 hover:to-yellow-700 font-semibold py-3 shadow-lg transition-all duration-300"
               >
                 <ArrowRight className="w-5 h-5 mr-2" />
                 Unirse al evento
@@ -77,22 +77,22 @@ const EventJoin = ({ onJoinEvent }: EventJoinProps) => {
         {/* Features */}
         <div className="grid grid-cols-3 gap-4 text-white">
           <div className="text-center space-y-2">
-            <div className="w-12 h-12 mx-auto bg-white/20 rounded-full flex items-center justify-center">
-              <Camera className="w-6 h-6" />
+            <div className="w-12 h-12 mx-auto bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg">
+              <Camera className="w-6 h-6 text-black" />
             </div>
-            <p className="text-sm font-medium">Fotos en vivo</p>
+            <p className="text-sm font-medium text-gray-300">Fotos en vivo</p>
           </div>
           <div className="text-center space-y-2">
-            <div className="w-12 h-12 mx-auto bg-white/20 rounded-full flex items-center justify-center">
-              <Users className="w-6 h-6" />
+            <div className="w-12 h-12 mx-auto bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg">
+              <Users className="w-6 h-6 text-black" />
             </div>
-            <p className="text-sm font-medium">Álbum compartido</p>
+            <p className="text-sm font-medium text-gray-300">Álbum compartido</p>
           </div>
           <div className="text-center space-y-2">
-            <div className="w-12 h-12 mx-auto bg-white/20 rounded-full flex items-center justify-center">
-              <Star className="w-6 h-6" />
+            <div className="w-12 h-12 mx-auto bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg">
+              <Star className="w-6 h-6 text-black" />
             </div>
-            <p className="text-sm font-medium">Retos divertidos</p>
+            <p className="text-sm font-medium text-gray-300">Retos divertidos</p>
           </div>
         </div>
       </div>

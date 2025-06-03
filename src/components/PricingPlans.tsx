@@ -59,20 +59,20 @@ const PricingPlans = ({ onPlanSelect, onBack }: PricingPlansProps) => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black p-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center text-white space-y-4 mb-8">
           <Button
             variant="ghost"
             onClick={onBack}
-            className="absolute top-4 left-4 text-white hover:bg-white/20"
+            className="absolute top-4 left-4 text-white hover:bg-yellow-400/20 hover:text-yellow-400"
           >
             <ArrowLeft className="w-5 h-5 mr-2" />
             Volver
           </Button>
-          <h1 className="text-4xl font-bold mt-12">Elige tu plan</h1>
-          <p className="text-lg opacity-90">Selecciona el plan perfecto para tu evento</p>
+          <h1 className="text-4xl font-bold mt-12 bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">Elige tu plan</h1>
+          <p className="text-lg text-gray-300">Selecciona el plan perfecto para tu evento</p>
         </div>
 
         {/* Plans Grid */}
@@ -80,29 +80,29 @@ const PricingPlans = ({ onPlanSelect, onBack }: PricingPlansProps) => {
           {plans.map((plan) => (
             <Card 
               key={plan.id}
-              className={`p-6 bg-white/10 backdrop-blur-sm border-white/20 text-white relative ${
-                plan.popular ? 'ring-2 ring-yellow-400' : ''
+              className={`p-6 bg-white/5 backdrop-blur-sm border-yellow-400/20 text-white relative transition-all duration-300 shadow-xl ${
+                plan.popular ? 'ring-2 ring-yellow-400 bg-yellow-400/5' : 'hover:bg-white/10'
               }`}
             >
               {plan.popular && (
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-yellow-400 text-purple-800 px-4 py-1 rounded-full text-sm font-semibold">
+                  <span className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-black px-4 py-1 rounded-full text-sm font-semibold shadow-lg">
                     Más Popular
                   </span>
                 </div>
               )}
               
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                <div className="text-4xl font-bold mb-2">{plan.price}</div>
-                <p className="opacity-80">{plan.description}</p>
+                <h3 className="text-2xl font-bold mb-2 text-yellow-400">{plan.name}</h3>
+                <div className="text-4xl font-bold mb-2 text-white">{plan.price}</div>
+                <p className="text-gray-300">{plan.description}</p>
               </div>
 
               <ul className="space-y-3 mb-8">
                 {plan.features.map((feature, index) => (
                   <li key={index} className="flex items-center space-x-2">
-                    <Check className="w-5 h-5 text-green-400" />
-                    <span className="text-sm">{feature}</span>
+                    <Check className="w-5 h-5 text-yellow-400" />
+                    <span className="text-sm text-gray-300">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -111,9 +111,9 @@ const PricingPlans = ({ onPlanSelect, onBack }: PricingPlansProps) => {
                 onClick={() => onPlanSelect(plan.id)}
                 className={`w-full ${
                   plan.popular 
-                    ? 'bg-yellow-400 text-purple-800 hover:bg-yellow-300' 
-                    : 'bg-white text-purple-600 hover:bg-white/90'
-                } font-semibold py-3`}
+                    ? 'bg-gradient-to-r from-yellow-400 to-yellow-600 text-black hover:from-yellow-500 hover:to-yellow-700' 
+                    : 'bg-white text-black hover:bg-gray-200'
+                } font-semibold py-3 shadow-lg transition-all duration-300`}
               >
                 Seleccionar Plan
               </Button>
