@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Camera, Users, MessageCircle, Download, Share, Heart } from 'lucide-react';
+import { Camera, Users, MessageCircle, Download, Share, Heart, Target } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -38,7 +38,7 @@ interface EventFeedProps {
 }
 
 const EventFeed = ({ eventCode, userName, onLeaveEvent }: EventFeedProps) => {
-  const [showCamera, setShowCamera] = useState(false);
+  const [showCamera, setShowCamera] = useState(true); // Mostrar cámara al inicio
   const [photos, setPhotos] = useState<Photo[]>([
     {
       id: '1',
@@ -58,7 +58,7 @@ const EventFeed = ({ eventCode, userName, onLeaveEvent }: EventFeedProps) => {
     { id: '3', title: 'Decoración especial', description: 'Foto de tu decoración favorita', completed: false, points: 5 }
   ]);
 
-  const [activeTab, setActiveTab] = useState<'feed' | 'missions'>('feed');
+  const [activeTab, setActiveTab] = useState<'comments' | 'missions'>('comments');
   const [newComment, setNewComment] = useState('');
   const [activeComments, setActiveComments] = useState<string | null>(null);
 
@@ -72,6 +72,7 @@ const EventFeed = ({ eventCode, userName, onLeaveEvent }: EventFeedProps) => {
       comments: []
     };
     setPhotos(prev => [newPhoto, ...prev]);
+    setShowCamera(false); // Ocultar cámara después de tomar foto
   };
 
   const handleLike = (photoId: string) => {
@@ -109,6 +110,15 @@ const EventFeed = ({ eventCode, userName, onLeaveEvent }: EventFeedProps) => {
     return `${hours}h`;
   };
 
+  if (showCamera) {
+    return (
+      <CameraCapture
+        onPhotoTaken={handlePhotoTaken}
+        onClose={() => setShowCamera(false)}
+      />
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-pink-50">
       {/* Header */}
@@ -130,34 +140,36 @@ const EventFeed = ({ eventCode, userName, onLeaveEvent }: EventFeedProps) => {
           </div>
         </div>
 
-        {/* Tabs */}
+        {/* Updated Tabs */}
         <div className="flex border-t">
           <button
-            onClick={() => setActiveTab('feed')}
-            className={`flex-1 py-3 text-center font-medium ${
-              activeTab === 'feed'
+            onClick={() => setActiveTab('comments')}
+            className={`flex-1 py-3 text-center font-medium flex items-center justify-center space-x-2 ${
+              activeTab === 'comments'
                 ? 'text-purple-600 border-b-2 border-purple-600'
                 : 'text-gray-500'
             }`}
           >
-            Feed
+            <MessageCircle className="w-4 h-4" />
+            <span>Comentarios</span>
           </button>
           <button
             onClick={() => setActiveTab('missions')}
-            className={`flex-1 py-3 text-center font-medium ${
+            className={`flex-1 py-3 text-center font-medium flex items-center justify-center space-x-2 ${
               activeTab === 'missions'
                 ? 'text-purple-600 border-b-2 border-purple-600'
                 : 'text-gray-500'
             }`}
           >
-            Misiones
+            <Target className="w-4 h-4" />
+            <span>Retos</span>
           </button>
         </div>
       </div>
 
       {/* Content */}
       <div className="pb-20">
-        {activeTab === 'feed' ? (
+        {activeTab === 'comments' ? (
           <div className="space-y-4 p-4">
             {photos.map(photo => (
               <Card key={photo.id} className="overflow-hidden bg-white/80 backdrop-blur-sm">
@@ -289,14 +301,6 @@ const EventFeed = ({ eventCode, userName, onLeaveEvent }: EventFeedProps) => {
           <Camera className="w-8 h-8" />
         </Button>
       </div>
-
-      {/* Camera Modal */}
-      {showCamera && (
-        <CameraCapture
-          onPhotoTaken={handlePhotoTaken}
-          onClose={() => setShowCamera(false)}
-        />
-      )}
     </div>
   );
 };
